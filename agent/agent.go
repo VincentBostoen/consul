@@ -414,6 +414,9 @@ func (a *Agent) listenHTTP() ([]net.Listener, error) {
 					}
 					l = tls.NewListener(l, tlscfg)
 				}
+
+			default:
+				return fmt.Errorf("unsupported address type %v", x)
 			}
 			ln = append(ln, l)
 		}
